@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "513380454326",
+    "firebase_url": "https://teapplication-58956.firebaseio.com",
+    "project_id": "teapplication-58956",
+    "storage_bucket": "teapplication-58956.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513380454326:android:98307d15b323ee5f",
+        "android_client_info": {
+          "package_name": "com.healer.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513380454326-7l1sif4dovt3jmoiq19nhkemv2l9sqch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.healer.dev",
+            "certificate_hash": "b7e521790fe01149f7f50673f1edb40f7619a987"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoMmUkT_PqZ-V3qcL0dMIMEaV0QuowPbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513380454326-kv726js901olegqug23f80sskhksv58d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

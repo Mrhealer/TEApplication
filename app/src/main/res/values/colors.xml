@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+
+    <color name="colorPrimaryLight">#4e5d72</color>
+    <color name="white">#ffffff</color>
+    <color name="darkgrey">#6c6c6c</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="bg">#283747</color>
+    <color name="red">#D32F2F</color>
+
+    <color name="nav_drawer_bg">#1B2836</color>
+
+    <color name="opaque_white">#90ffffff</color>
+
+    <color name="opaque_black">#90000000</color>
+    <color name="light_gray">#e9e9e9</color>
+    <color name="bit_dark_gray">#22ffffff</color>
+    <color name="light_blue">#ADD8E6</color>
+
+
+    <color name="color_green_deadline">#22C461</color>
+    <color name="color_red_deadline">#DC1A2E</color>
+    <color name="color_yellow_deadline">#FFBE4E</color>
+
+    <color name="screen_one">#00BCD4</color>
+    <color name="screen_two">#009688</color>
+
+    <color name="translucent_scrim_bottom">#6f000000</color>
+    <color name="translucent_scrim_bottom_center">#0D000000</color>
+
+    <color name="scrim_color">#86000000</color>
+
+
+    <color name="bnv_color">#151e3f</color>
+    <color name="blue_jeans">#63adf2</color>
+    <color name="ufo_green">#32e875</color>
+    <color name="vivid_tangelo">#ea7317</color>
+
+
+    <color name="dot_dark1">#0288D1</color>
+    <color name="dot_dark2">#00796B</color>
+    <color name="dot_dark3">#7B1FA2</color>
+    <color name="dot_dark4">#C2185B</color>
+    <color name="dot_dark5">#D32F2F</color>
+
+    <color name="dot_light1">#81D4FA</color>
+    <color name="dot_light2">#80CBC4</color>
+    <color name="dot_light3">#CE93D8</color>
+    <color name="dot_light4">#F48FB1</color>
+    <color name="dot_light5">#EF9A9A</color>
+    <color name="dark_green">#22C461</color>
+    <color name="dark_red">#DC1A2E</color>
+
+    <array name="dot_active">
+        <item>@color/dot_dark1</item>
+        <item>@color/dot_dark2</item>
+        <item>@color/dot_dark3</item>
+        <item>@color/dot_dark4</item>
+        <item>@color/dot_dark5</item>
+    </array>
+
+    <array name="dot_inactive">
+        <item>@color/dot_light1</item>
+        <item>@color/dot_light2</item>
+        <item>@color/dot_light3</item>
+        <item>@color/dot_light4</item>
+        <item>@color/dot_light5</item>
+    </array>
+
+    <color name="divider_light">#BDBDBD</color>
+    <color name="ripple_color">#bdbdbd</color>
+
+</resources>
