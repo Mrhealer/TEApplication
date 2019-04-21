@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/scoreboard"
+        android:icon="@drawable/ic_scoreboard"
+        android:title="@string/scoreboard" />
+
+    <item
+        android:id="@+id/quizlist"
+        android:checkable="true"
+        android:checked="true"
+        android:icon="@drawable/ic_quiz_list"
+        android:title="@string/quizlist"
+        app:actionLayout="@layout/menu_counter_quizzes" />
+
+    <item
+        android:id="@+id/create_quizzes"
+        android:icon="@drawable/ic_create_quiz"
+        android:title="@string/createQuiz" />
+
+    <item
+        android:id="@+id/notifications"
+        android:icon="@drawable/ic_notifications"
+        android:title="@string/notifications"
+        app:actionLayout="@layout/menu_counter_notifications" />
+
+    <item
+        android:id="@+id/resources"
+        android:icon="@drawable/ic_resources_android"
+        android:title="@string/resources" />
+
+</menu>
