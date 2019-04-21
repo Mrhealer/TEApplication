@@ -43,6 +43,7 @@ import com.healer.dev.data.models.Quiz;
 import com.healer.dev.ui.PresenterInjector;
 import com.healer.dev.ui.quizdetails.QuizDetailsActivity;
 import com.healer.dev.ui.quizdetails.QuizDetailsContract;
+import com.healer.dev.ui.settings.SettingsActivity;
 import com.healer.dev.utils.Connectivity;
 
 import java.util.List;
@@ -368,6 +369,14 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     toggleQuizFilterView(false);
                 }
                 break;
+            case R.id.logout:
+                // TODO: Show a confirmation {@link AlertDialog} here. When user cliks OK. call
+                // TODO: mPresenter.logout();
+                break;
+            case R.id.settings:
+                Intent settings = new Intent(this, SettingsActivity.class);
+                startActivity(settings);
+                break;
 
         }
         return super.onOptionsItemSelected(item);
@@ -451,8 +460,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     @Override
     public void navigateToSettings() {
         // TODO : It will implement later
-//        Intent settingsIntent = new Intent(this, SettingsActivity.class);
-//        startActivity(settingsIntent);
+        Intent settingsIntent = new Intent(this, SettingsActivity.class);
+        startActivity(settingsIntent);
     }
 
     @Override
