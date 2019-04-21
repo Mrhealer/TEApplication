@@ -46,6 +46,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
 
     private DatabaseReference mQuizzesRef;
     private DatabaseReference mUsersRef;
+    private DatabaseReference mResourcesRef;
 
     private List<ValueEventListener> mValueListeners;
 
@@ -60,6 +61,9 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
 
         mUsersRef = rootRef.child(REF_USERS_NODE);
         mQuizzesRef = rootRef.child(REF_QUIZZES_NODE);
+
+        mResourcesRef = rootRef.child(REF_RESOURCES_NODE);
+
     }
 
     @Override
@@ -291,17 +295,63 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
 
     @Override
     public void updateMyAttemptedQuizzes(QuizAttempted quizAttempt, Callback<Void> callback) {
-        callback.onReponse(null);
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
+
+        mUsersRef.child(mCurrentUser.getUid())
+                .child(KEY_USER_ATTEMPTED_QUIZ)
+                .child(quizAttempt.getQuizId())
+                .setValue(quizAttempt)
+                .addOnSuccessListener(aVoid -> callback.onReponse(null))
+                .addOnFailureListener(e -> callback.onError());
     }
 
     @Override
     public void updateQuizBookmarkStatus(String quizIdentifier, boolean isBookmarked, Callback<Void> callback) {
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
 
+        mUsersRef.child(mCurrentUser.getUid()).child(KEY_USER_BOOKMARKS).child(quizIdentifier)
+                .setValue(isBookmarked)
+                .addOnSuccessListener(aVoid -> callback.onReponse(null))
+                .addOnFailureListener(e -> callback.onError());
     }
 
     @Override
     public void getMyBookmarks(Callback<List<String>> callback) {
+        if (mCurrentUser == null) {
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        }
 
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    List<String> bookmarks = new ArrayList<>();
+                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                        try {
+                            boolean isAdded = (boolean) childSnapshot.getValue();
+                            if (isAdded) {
+                                bookmarks.add(childSnapshot.getKey());
+                            }
+                        } catch (NullPointerException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    callback.onReponse(bookmarks);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        mUsersRef.child(mCurrentUser.getUid()).child(KEY_USER_BOOKMARKS)
+                .addValueEventListener(listener);
     }
 
     @Override
@@ -326,7 +376,33 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
 
     @Override
     public void fetchResources(int startFrom, int limit, Callback<List<Resource>> callback) {
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot != null) {
+                    List<Resource> resources = new ArrayList<>();
+                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                        Resource resource = childSnapshot.getValue(Resource.class);
+                        resources.add(resource);
+                    }
+                    callback.onReponse(resources);
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                callback.onError();
+            }
+        };
+
+        Query resourcesQuery = mResourcesRef.orderByChild(KEY_TIMESTAMP);
+
+        if (limit > 0) {
+            resourcesQuery.limitToFirst(limit);
+        }
+
+        resourcesQuery.addValueEventListener(listener);
+        mValueListeners.add(listener);
     }
 
     @Override
@@ -334,9 +410,7 @@ public class FirebaseHandlerImpl implements FirebaseHandler {
         // Remove all listeners
         for (ValueEventListener listener : mValueListeners) {
             mQuizzesRef.removeEventListener(listener);
-//            mDiscussionsRef.removeEventListener(listener);
             mUsersRef.removeEventListener(listener);
-//            mDiscussionsRef.removeEventListener(listener);
         }
     }
 

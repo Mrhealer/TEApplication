@@ -86,7 +86,6 @@ public class AppDataHandler implements DataHandler {
                         callback.onError();
                     }
                 });
-                callback.onResponse(quizzes);
             }
         });
     }
@@ -117,8 +116,7 @@ public class AppDataHandler implements DataHandler {
                         mFirebaseHandler.destroy();
                     }
                 });
-                callback.onResponse(fetchedQuiz);
-                Log.d("LongKAKA", "fetchQuizzes: " + fetchedQuiz);
+
             }
 
             @Override

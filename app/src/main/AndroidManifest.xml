@@ -16,11 +16,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.settings.SettingsActivity"></activity>
         <activity
             android:name=".ui.profile.UserProfileActivity"
             android:theme="@style/AppTheme">
-            <!--  Adding this intent filter here to silence the warning ,this should be a part of home
-              activity or quiz details activity-->
+
+            <!--
+              Adding this intent filter here to silence the warning ,this should be a part of home
+              activity or quiz details activity
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
