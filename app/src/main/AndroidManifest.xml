@@ -16,13 +16,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.quizattempt.AttemptQuizActivity"></activity>
+        <activity android:name=".ui.quizdetails.QuizDetailsActivity" />
         <activity
             android:name=".ui.home.HomeActivity"
             android:theme="@style/homeactivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".ui.signin.SignInActivity"

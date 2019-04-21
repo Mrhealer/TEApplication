@@ -75,7 +75,7 @@ public class AppDataHandler implements DataHandler {
                                 singleQuiz.setBookmarked(result.getBookmarks().get(singleQuiz.getKey()));
                             }
                         }
-                        Log.d("LongKAKA","fetchQuizzes: "+ quizzes);
+                        Log.d("LongKAKA", "fetchQuizzes: " + quizzes);
                         callback.onResponse(quizzes);
                         mFirebaseHandler.destroy();
                     }
@@ -86,6 +86,7 @@ public class AppDataHandler implements DataHandler {
                         callback.onError();
                     }
                 });
+                callback.onResponse(quizzes);
             }
         });
     }
@@ -116,7 +117,7 @@ public class AppDataHandler implements DataHandler {
                         mFirebaseHandler.destroy();
                     }
                 });
-                Log.d("LongKAKA","fetchQuizzes: "+ fetchedQuiz);
+                Log.d("LongKAKA", "fetchQuizzes: " + fetchedQuiz);
             }
 
             @Override
