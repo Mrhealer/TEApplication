@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/details_page_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/details_page_toolbar_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/udacity_toolbar_logo" />
+
+        <TextView
+            android:id="@+id/details_page_toolbar_settings"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/details_page_toobar_title_horizontal"
+            android:text="@string/details_page_setup_profile"
+            android:textColor="@android:color/white" />
+    </android.support.v7.widget.Toolbar>
+
+    <!--For profile picture and email section -->
+    <LinearLayout
+        android:id="@+id/details_page_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_page_toolbar"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/details_page_linerlayout_border"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/details_page_relative_profileDp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_user_pic"
+                android:layout_width="@dimen/details_page_profile_pic_width"
+                android:layout_height="@dimen/details_page_profile_pic_height"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/details_page_image_vertical_margin"
+                android:layout_marginBottom="@dimen/details_page_image_vertical_margin"
+                android:src="@drawable/details_page_profile_pic" />
+
+            <TextView
+                android:id="@+id/tv_email_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/details_page_email_vertical_margin"
+                android:layout_toEndOf="@id/img_user_pic"
+                android:fontFamily="@font/roboto_thin"
+                android:text="@string/details_page_email"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/details_page_email_text" />
+
+            <TextView
+                android:id="@+id/details_page_text_changeDp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_email_details"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_toEndOf="@id/img_user_pic"
+                android:fontFamily="@font/roboto"
+                android:text="@string/details_page_change_photo"
+                android:textColor="@color/light_blue" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- below profile picture section -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/details_page_linear_layout"
+        android:layout_marginTop="@dimen/details_page_large_vertical_margin"
+        android:background="@color/light_gray"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/details_page_image_name"
+            android:layout_width="@dimen/details_et_image"
+            android:layout_height="@dimen/details_et_image"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/details_page_icon_vertical_margin"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_person" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/details_page_textinput_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/details_page_small_horizontal_margin"
+            android:layout_marginEnd="@dimen/details_page_small_horizontal_margin"
+            android:layout_toEndOf="@id/details_page_image_name">
+
+            <EditText
+                android:id="@+id/et_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/details_page_small_horizontal_margin"
+                android:layout_marginTop="@dimen/details_page_large_vertical_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:fontFamily="@font/roboto"
+                android:hint="@string/details_page_name"
+                android:inputType="textPersonName"
+                android:padding="@dimen/details_page_padding"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/colorAccent" />
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/details_page_image_slack"
+            android:layout_width="@dimen/details_et_image"
+            android:layout_height="@dimen/details_et_image"
+            android:layout_below="@id/details_page_textinput_name"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/details_page_icon_vertical_margin"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_slack" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/details_page_textinput_slack_handle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_page_textinput_name"
+            android:layout_marginStart="@dimen/details_page_small_horizontal_margin"
+            android:layout_marginTop="@dimen/details_page_small_vertical_margin"
+            android:layout_marginEnd="@dimen/details_page_small_horizontal_margin"
+            android:layout_toEndOf="@id/details_page_image_slack">
+
+            <EditText
+                android:id="@+id/et_slack_handle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/details_page_small_horizontal_margin"
+                android:layout_marginTop="@dimen/details_page_large_vertical_margin"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                android:fontFamily="@font/roboto"
+                android:hint="@string/details_page_slack_handle"
+                android:inputType="text"
+                android:padding="@dimen/details_page_padding"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/colorAccent" />
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/details_page_image_track"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_page_textinput_slack_handle"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/details_page_icon_vertical_margin"
+            android:src="@drawable/ic_track" />
+
+        <Spinner
+            android:id="@+id/details_page_spinner_track"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/details_page_textinput_slack_handle"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/details_page_large_vertical_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@id/details_page_image_track"
+            android:entries="@array/details_page_track_spinner"
+            android:fontFamily="@font/roboto"
+            android:spinnerMode="dropdown" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_details_proceed"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:clickable="true"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/details_page_next_btn"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/details_page_button_text"
+        android:theme="@style/DetailsActivityButton" />
+
+    <ProgressBar
+        android:id="@+id/pb_profile"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:backgroundTint="#FFFFFF"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorPrimary"
+        android:max="100"
+        android:visibility="gone" />
+
+</RelativeLayout>
