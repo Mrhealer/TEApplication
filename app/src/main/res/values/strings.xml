@@ -1,14 +1,10 @@
 <resources>
     <string name="app_name">TEApplication</string>
     <string name="quiz_app">Quiz App</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="thumb_link">https://drive.google.com/uc?export=download&amp;id=</string>
     <string name="deadline">Deadline:</string>
 
     <!--Sign In page text-->
-    <string name="sigin_text_almost_there">For Scholars, By Scholars</string>
+    <string name="sigin_text_almost_there">Design By KMT TNUT</string>
 
 
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
@@ -19,11 +15,11 @@
     <string name="details_page_slack_handle">Slack Handle</string>
     <string name="details_page_next_btn">Next</string>
     <string name="details_page_change_photo">Change Profile Photo</string>
-    <string name="details_page_select_track">Select Your Track</string>
     <string name="details_page_setup_profile">Setup Profile</string>
     <string-array name="details_page_track_spinner">
         <item>Select Your Track</item>
-        <item>Android Developer</item>
+        <item>Teacher</item>
+        <item>Student</item>
     </string-array>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

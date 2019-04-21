@@ -16,7 +16,7 @@
             android:id="@+id/details_page_toolbar_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/udacity_toolbar_logo" />
+            android:src="@drawable/centificate_toolbar" />
 
         <TextView
             android:id="@+id/details_page_toolbar_settings"
