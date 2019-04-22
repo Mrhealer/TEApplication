@@ -193,5 +193,5 @@
     <string name="no_un_attempted_quizzes">All Caught Up!</string>
 
     <string name="type_comment_hint">Type message here</string>
-    <string name="msg_under_construction">Feature is under construction</string>
+    <string name="msg_under_construction">This function is being developed</string>
 </resources>

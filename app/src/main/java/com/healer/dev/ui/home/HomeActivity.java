@@ -41,6 +41,7 @@ import com.bumptech.glide.Glide;
 import com.healer.dev.R;
 import com.healer.dev.data.models.Quiz;
 import com.healer.dev.ui.PresenterInjector;
+import com.healer.dev.ui.about.AboutActivity;
 import com.healer.dev.ui.quizdetails.QuizDetailsActivity;
 import com.healer.dev.ui.quizdetails.QuizDetailsContract;
 import com.healer.dev.ui.settings.SettingsActivity;
@@ -163,6 +164,15 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                 }
             }
         });
+        findViewById(R.id.about).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (mPresenter != null) {
+                    mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_ABOUT);
+                }
+            }
+        });
 
         //initializing empty view
         mEmptyStateTextView = findViewById(R.id.empty_view);
@@ -186,6 +196,14 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     toggleQuizFilterView(false);
             }
         });
+
+        //Get reference to the quiz list filter layout and radio buttons
+        mRGHomeQuizListFilter = findViewById(R.id.home_quiz_list_filter_radio_group);
+        //Set radio group checked change listener so we can perform an action when a different
+        //quiz filter is selected.
+        mRGHomeQuizListFilter.setOnCheckedChangeListener(
+                this::onQuizFilterItemCheckedChanged);
+
     }
 
 
@@ -354,6 +372,32 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         });
     }
 
+    /**
+     * This method will be invoked when quiz filter option is changed.
+     *
+     * @param radioGroup RadioGroup reference
+     * @param id         id of the radio button
+     */
+    private void onQuizFilterItemCheckedChanged(RadioGroup radioGroup, int id) {
+        //Hide the quiz filter view after few ms
+        new Handler().postDelayed(() -> toggleQuizFilterView(false), SLIDE_UP_DELAY_ON_CHECKED_CHANGED);
+
+        //Perform action based on selected quiz filter
+        switch (id) {
+            case R.id.radio_quiz_filter_all:
+                mPresenter.onAllQuizSelected();
+                break;
+            case R.id.radio_quiz_filter_attempted:
+                mPresenter.onAttemptedQuizSelected();
+                break;
+            case R.id.radio_quiz_filter_un_attempted:
+                mPresenter.onUnAttemptedQuizSelected();
+                break;
+            case R.id.radio_quiz_filter_bookmarks:
+                mPresenter.onBookmarkSelected();
+                break;
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -447,6 +491,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
         // TODO : It will implement later
 //        Intent notificationIntent = new Intent(this, NotificationActivity.class);
 //        startActivity(notificationIntent);
+        Toast.makeText(getApplicationContext(), R.string.msg_under_construction, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -455,6 +500,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 //        Intent resourcesIntent = new Intent(this, NotificationActivity.class);
 //        resourcesIntent.putExtra(AppConstants.NOTIFICATION_TYPE_RESOURCES, true);
 //        startActivity(resourcesIntent);
+        Toast.makeText(getApplicationContext(), R.string.msg_under_construction, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -466,8 +512,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void navigateToAboutScreen() {
-        // TODO: Navigate to About screen
-        Toast.makeText(getApplicationContext(), R.string.msg_under_construction, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
     }
 
     @Override

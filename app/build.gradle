@@ -51,6 +51,7 @@ dependencies {
     implementation "com.android.support:support-v4:$rootProject.supportLibVersion"
 
     implementation group: 'com.google.code.gson', name: 'gson', version: "$rootProject.gsonVersion"
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
 
 
 }
