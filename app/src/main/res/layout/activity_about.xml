@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:text="Student Tnut"
+                android:text="MrHealer Tnut"
                 android:textColor="#fff"
                 android:textSize="21sp"
                 android:textStyle="bold" />
@@ -355,7 +355,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="35dp"
         android:background="@drawable/buttonstyle"
-        android:text="Follow Me"
+        android:text="Contact with Me"
         android:textColor="#fff" />
 
 

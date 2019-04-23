@@ -396,6 +396,15 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             case R.id.radio_quiz_filter_bookmarks:
                 mPresenter.onBookmarkSelected();
                 break;
+            case R.id.radio_quiz_part5:
+                mPresenter.onPartFiveSelected();
+                break;
+            case R.id.radio_quiz_part6:
+                mPresenter.onPartSixSelected();
+                break;
+            default:
+                break;
+
         }
     }
 
@@ -553,6 +562,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             case HomeContract.UNATTEMPTED_QUIZZES:
                 mIVEmptyFilterResult.setImageResource(R.drawable.ic_fireworks);
                 mTVEmptyFilterResult.setText(R.string.no_un_attempted_quizzes);
+                break;
+            case HomeContract.PART_QUIZZES:
+                mIVEmptyFilterResult.setImageResource(R.drawable.ic_frown_face);
+                mTVEmptyFilterResult.setText(R.string.no_part_quizzes);
                 break;
             default:
                 throw new UnsupportedOperationException();

@@ -10,7 +10,7 @@
         android:layout_gravity="center"
         android:background="@drawable/item_counter_two"
         android:gravity="center"
-        android:text="@string/newnotification"
+        android:text="@string/newNotification"
         android:padding="@dimen/card_view_elevation"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
         android:textColor="@color/white" />

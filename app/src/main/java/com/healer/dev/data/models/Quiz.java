@@ -82,6 +82,10 @@ public class Quiz {
     @Exclude
     private String mKey;
 
+    @Expose
+    @SerializedName("part")
+    private int mPart;
+
     public Quiz() {
 
     }
@@ -105,6 +109,7 @@ public class Quiz {
         mDeadline = toClone.mDeadline;
         mAttempted = toClone.mAttempted;
         mIsBookmarked = toClone.mIsBookmarked;
+        mPart = toClone.mPart;
 
         if (toClone.mFiles != null) {
             Map<String, String> files = new HashMap<>();
@@ -284,6 +289,16 @@ public class Quiz {
         mIsBookmarked = bookmarked;
     }
 
+    @PropertyName("part")
+    public int getpart() {
+        return mPart;
+    }
+
+    @PropertyName("part")
+    public void setPart(int part) {
+        mPart = part;
+    }
+
     /**
      * All the questions, attempts, correct answers etc. Should be used carefully. We will be using
      * the same model to store question and scholar's answer
@@ -305,6 +320,7 @@ public class Quiz {
         return mLesson == quiz.mLesson &&
                 mMaxMarks == quiz.mMaxMarks &&
                 mRatedBy == quiz.mRatedBy &&
+                mPart == quiz.mPart &&
                 Double.compare(quiz.mRating, mRating) == 0 &&
                 Objects.equals(mCreatorId, quiz.mCreatorId) &&
                 Objects.equals(mCreatorName, quiz.mCreatorName) &&
@@ -322,7 +338,7 @@ public class Quiz {
 
         return Objects.hash(mCreatorId, mCreatorName, mDescription, mDifficulty, mFiles,
                 mLastModified, mLesson, mMaxMarks, mQuestions, mRatedBy, mRating,
-                mTitle, mDeadline);
+                mTitle, mDeadline,mPart);
     }
 
 }

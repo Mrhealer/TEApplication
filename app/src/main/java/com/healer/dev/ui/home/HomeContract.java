@@ -18,6 +18,7 @@ public interface HomeContract {
     String BOOKMARKED_QUIZZES = "bookmarked-quizzes";
     String ATTEMPTED_QUIZZES = "attempted-quizzes";
     String UNATTEMPTED_QUIZZES = "un-attempted-quizzes";
+    String PART_QUIZZES = "part-quizzes";
 
     /**
      * Home View
@@ -73,6 +74,10 @@ public interface HomeContract {
         void onBookmarkSelected();
 
         void onBookmarkStatusChange(Quiz quiz);
+
+        void onPartFiveSelected();
+
+        void onPartSixSelected();
     }
 
 }

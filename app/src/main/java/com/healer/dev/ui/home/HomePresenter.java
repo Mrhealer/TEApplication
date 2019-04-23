@@ -173,4 +173,32 @@ public class HomePresenter implements HomeContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void onPartFiveSelected() {
+        List<Quiz> partQuizzes = new ArrayList<>();
+        for (Quiz quiz : mQuizzes) {
+            if (quiz.getpart() == 5) {
+                partQuizzes.add(quiz);
+            }
+        }
+        if (partQuizzes.isEmpty()) {
+            mView.handleEmptyView(HomeContract.PART_QUIZZES);
+        }
+        mView.loadQuizzes(partQuizzes);
+    }
+
+    @Override
+    public void onPartSixSelected() {
+        List<Quiz> partQuizzes = new ArrayList<>();
+        for (Quiz quiz : mQuizzes) {
+            if (quiz.getpart() == 6) {
+                partQuizzes.add(quiz);
+            }
+        }
+        if (partQuizzes.isEmpty()) {
+            mView.handleEmptyView(HomeContract.PART_QUIZZES);
+        }
+        mView.loadQuizzes(partQuizzes);
+    }
 }
