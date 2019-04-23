@@ -1,10 +1,13 @@
 package com.healer.dev.ui.about;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.healer.dev.R;
 
+/**
+ * Class display about from Dev
+ */
 public class AboutActivity extends AppCompatActivity {
 
     @Override

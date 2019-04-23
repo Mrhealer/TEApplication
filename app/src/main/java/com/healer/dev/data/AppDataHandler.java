@@ -2,7 +2,6 @@ package com.healer.dev.data;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import com.healer.dev.application.TApplication;
 import com.healer.dev.data.local.DBHandler;
@@ -19,10 +18,12 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * Class handle data from Database
+ */
 public class AppDataHandler implements DataHandler {
 
-
-    private static AppDataHandler INSTANCE = null;
+    private static AppDataHandler sINSTANCE = null;
 
     private PrefsHelper mPreferences;
     private DBHandler mDBHandler;
@@ -35,17 +36,21 @@ public class AppDataHandler implements DataHandler {
         mFirebaseHandler = FirebaseProvider.provide();
     }
 
+    /**
+     * This is Singleton DesignPatten. It use for get Instance
+     *
+     * @return
+     */
     static AppDataHandler getInstance() {
-        if (INSTANCE == null) {
+        if (sINSTANCE == null) {
             synchronized (AppDataHandler.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = new AppDataHandler();
+                if (sINSTANCE == null) {
+                    sINSTANCE = new AppDataHandler();
                 }
             }
         }
-        return INSTANCE;
+        return sINSTANCE;
     }
-
 
     @Override
     public void fetchQuizzes(int limitToFirst, final Callback<List<Quiz>> callback) {
@@ -53,7 +58,6 @@ public class AppDataHandler implements DataHandler {
         mFirebaseHandler.fetchQuizzes(limitToFirst, new FirebaseCallback<List<Quiz>>(callback) {
             @Override
             public void onReponse(List<Quiz> quizzes) {
-
                 // Fetch user info to get bookmarks and attempted quizzes
                 mFirebaseHandler.fetchUserInfo(null, new FirebaseHandler.Callback<User>() {
                     @Override
@@ -66,20 +70,19 @@ public class AppDataHandler implements DataHandler {
                         // Mark attempted quizzes
                         for (Quiz singleQuiz : quizzes) {
                             for (QuizAttempted attempt : attemptedQuizzes) {
-                                if (singleQuiz.getKey().equalsIgnoreCase(attempt.getQuizId())) {
+                                if (attempt.getQuizId().equalsIgnoreCase(singleQuiz.getKey())) {
                                     singleQuiz.setAttempted(true);
                                     break;
                                 }
                             }
-                            if (result.getBookmarks() != null && result.getBookmarks().containsKey(singleQuiz.getKey())) {
+                            if (result.getBookmarks() != null &&
+                                    result.getBookmarks().containsKey(singleQuiz.getKey())) {
                                 singleQuiz.setBookmarked(result.getBookmarks().get(singleQuiz.getKey()));
                             }
                         }
-                        Log.d("LongKAKA", "fetchQuizzes: " + quizzes);
                         callback.onResponse(quizzes);
                         mFirebaseHandler.destroy();
                     }
-
 
                     @Override
                     public void onError() {
@@ -93,7 +96,6 @@ public class AppDataHandler implements DataHandler {
     @Override
     public void fetchQuizById(String quizId, Callback<Quiz> callback) {
         mFirebaseHandler.fetchQuizById(quizId, new FirebaseCallback<Quiz>(callback) {
-
             @Override
             public void onReponse(Quiz fetchedQuiz) {
 
@@ -128,12 +130,12 @@ public class AppDataHandler implements DataHandler {
     }
 
     @Override
-    public void fetchAttemptedQuizzes(Callback<List<QuizAttempted>> callback) {
+    public void fetchAttemptedQuizzes(final Callback<List<QuizAttempted>> callback) {
         mFirebaseHandler.fetchAttemptedQuizzes(new FirebaseCallback<>(callback));
     }
 
     @Override
-    public void updateSlackHandle(String slackHandle, Callback<Void> callback) {
+    public void updateSlackHandle(String slackHandle, final Callback<Void> callback) {
         mFirebaseHandler.updateSlackHandle(slackHandle, new FirebaseCallback<>(callback));
     }
 
@@ -143,33 +145,34 @@ public class AppDataHandler implements DataHandler {
     }
 
     @Override
-    public void updateUserName(String userName, Callback<Void> callback) {
+    public void updateUserName(String userName, final Callback<Void> callback) {
         mFirebaseHandler.updateUserName(userName, new FirebaseCallback<>(callback));
     }
 
     @Override
-    public void updateProfilePic(String profilePicUrl, Callback<Void> callback) {
+    public void updateProfilePic(String profilePicUrl, final Callback<Void> callback) {
         mFirebaseHandler.updateProfilePic(profilePicUrl, new FirebaseCallback<>(callback));
     }
 
     @Override
-    public void uploadProfilePic(String localPicturePath, Callback<String> callback) {
-        // TODO: Implement this feature using firebase storage
+    public void uploadProfilePic(String localPicturePath, final Callback<String> callback) {
+        // TODO: Implement this feature using fireBase storage
         throw new RuntimeException("Feature not implemented");
     }
 
     @Override
-    public void uploadProfilePic(Bitmap picBitmap, Callback<String> callback) {
-        // TODO: Implement this feature using firebase storage
+    public void uploadProfilePic(final Bitmap picBitmap,final Callback<String> callback) {
+        // TODO: Implement this feature using fireBase storage
         throw new RuntimeException("Feature not implemented");
     }
 
     @Override
     public void postComment(String discussionId, String quizId, String scholarComment, Callback<Void> callback) {
+        int divideTime = 1000;
         Comment comment = new Comment();
         comment.setComment(scholarComment);
         comment.setCommentBy(mPreferences.getUserName());
-        comment.setCommentedOn(System.currentTimeMillis() / 1000);
+        comment.setCommentedOn(System.currentTimeMillis() / divideTime);
         comment.setImage(mPreferences.getUserPic());
         mFirebaseHandler.postComment(discussionId, quizId, comment, new FirebaseCallback<>(callback));
     }
