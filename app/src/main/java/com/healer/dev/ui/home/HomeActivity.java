@@ -621,8 +621,14 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     case R.id.notifications:
                         mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_NOTIFICATIONS);
                         break;
-                    case R.id.resources:
-                        mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_RESOURCES);
+//                    case R.id.resources:
+//                        mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_RESOURCES);
+//                        break;
+                    case R.id.part_5_toeic:
+                        mPresenter.onPartSixSelected();
+                        break;
+                    case R.id.part_6_toeic:
+                        mPresenter.onPartFiveSelected();
                         break;
                     default:
                         break;

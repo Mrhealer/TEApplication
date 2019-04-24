@@ -166,5 +166,18 @@
     <!-- Dimensions For Animated Loading Dots -->
     <dimen name="loading_dots_width">224dp</dimen>
     <dimen name="loading_dots_height">128dp</dimen>
+    <!--Base default-->
+    <dimen name="base_header">230dp</dimen>
+    <dimen name="base_width">100dp</dimen>
+    <dimen name="base_height">100dp</dimen>
+    <dimen name="base_margin_20">20dp</dimen>
+    <dimen name="base_margin_10">10dp</dimen>
+    <dimen name="base_border">1dp</dimen>
+    <dimen name="base_text_21sp">21sp</dimen>
+    <dimen name="base_with_card">400dp</dimen>
+    <dimen name="base_height_card">70dp</dimen>
 
+    <!--custom-->
+    <dimen name="card_view_margin_top">190dp</dimen>
+    <dimen name="about_ln_height">75dp</dimen>
 </resources>

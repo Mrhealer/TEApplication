@@ -26,9 +26,18 @@
         android:title="@string/notifications"
         app:actionLayout="@layout/menu_counter_notifications" />
 
+    <!--    <item
+            android:id="@+id/resources"
+            android:icon="@drawable/ic_resources_android"
+            android:title="@string/resources" />-->
+
     <item
-        android:id="@+id/resources"
-        android:icon="@drawable/ic_resources_android"
-        android:title="@string/resources" />
+        android:id="@+id/part_5_toeic"
+        android:icon="@drawable/ic_part_5_toeic"
+        android:title="@string/toeic_part_5" />
+    <item
+        android:id="@+id/part_6_toeic"
+        android:icon="@drawable/ic_part_5_toeic"
+        android:title="@string/toeic_part_6" />
 
 </menu>
