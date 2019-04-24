@@ -96,8 +96,8 @@ public class HomePresenter implements HomeContract.Presenter {
             case HomeContract.NAVIGATION_SETTINGS:
                 mView.navigateToSettings();
                 break;
-            case HomeContract.NAVIGATION_SCOREBOARD:
-                mView.navigateToScoreboard();
+            case HomeContract.NAVIGATION_COURSE:
+                mView.navigateToCourse();
                 break;
             default:
                 break;

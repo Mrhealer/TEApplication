@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface HomeContract {
 
-    int NAVIGATION_SCOREBOARD = 0;
+    int NAVIGATION_COURSE = 0;
     int NAVIGATION_CREATE_QUIZ = 1;
     int NAVIGATION_NOTIFICATIONS = 2;
     int NAVIGATION_RESOURCES = 3;
@@ -36,7 +36,7 @@ public interface HomeContract {
 
         void navigateToQuizDesc(Quiz quiz);
 
-        void navigateToScoreboard();
+        void navigateToCourse();
 
         void navigateToCreateQuiz();
 

@@ -75,4 +75,10 @@
     <color name="divider_light">#BDBDBD</color>
     <color name="ripple_color">#bdbdbd</color>
 
+    <color name="colorTextWhite">#ffffff</color>
+    <color name="colorTextBlack">#000000</color>
+    <color name="colorPbNew">#05966474</color>
+    <color name="colorPbReview">#5e966474</color>
+    <color name="colorPbMaster">#966474</color>
+
 </resources>

@@ -44,6 +44,7 @@ import com.healer.dev.ui.PresenterInjector;
 import com.healer.dev.ui.about.AboutActivity;
 import com.healer.dev.ui.quizdetails.QuizDetailsActivity;
 import com.healer.dev.ui.quizdetails.QuizDetailsContract;
+import com.healer.dev.ui.Course.ToeicCourse;
 import com.healer.dev.ui.settings.SettingsActivity;
 import com.healer.dev.utils.Connectivity;
 
@@ -484,9 +485,11 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     }
 
     @Override
-    public void navigateToScoreboard() {
-        // TODO: Navigate to Scoreboard screen
-        Toast.makeText(getApplicationContext(), R.string.msg_under_construction, Toast.LENGTH_SHORT).show();
+    public void navigateToCourse() {
+        // TODO: Navigate to Course screen
+//        Toast.makeText(getApplicationContext(), R.string.msg_under_construction, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ToeicCourse.class);
+        startActivity(intent);
     }
 
     @Override
@@ -612,8 +615,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             @Override
             public void run() {
                 switch (menuItem.getItemId()) {
-                    case R.id.scoreboard:
-                        mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_SCOREBOARD);
+                    case R.id.Course:
+                        mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_COURSE);
                         break;
                     case R.id.create_quizzes:
                         mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_CREATE_QUIZ);

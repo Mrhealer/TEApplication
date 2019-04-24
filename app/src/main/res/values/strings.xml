@@ -70,7 +70,7 @@
     <string name="txt_deadline_none">NONE</string>
 
     <!--Navigation Drawer Menu Items-->
-    <string name="scoreboard">Scoreboard</string>
+    <string name="Course">Course</string>
     <string name="quizlist">QuizList</string>
     <string name="createQuiz">Create Quiz</string>
     <string name="notifications">Notifications</string>
