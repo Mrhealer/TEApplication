@@ -1,4 +1,4 @@
-package com.healer.dev.ui.Course;
+package com.healer.dev.ui.course;
 
 import android.content.Intent;
 import android.os.Bundle;
