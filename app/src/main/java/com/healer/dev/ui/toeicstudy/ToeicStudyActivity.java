@@ -15,11 +15,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.healer.dev.R;
 import com.healer.dev.data.local.DatabaseManager;
 import com.healer.dev.data.models.TopicModel;
 import com.healer.dev.data.models.WordModel;
-import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -92,7 +92,8 @@ public class ToeicStudyActivity extends AppCompatActivity {
         tvType.setText(wordModel.type);
         tvExample.setText(wordModel.example);
         tvExampleTran.setText(wordModel.example_translation);
-        Picasso.with(this).load(wordModel.image_url).into(ivWord);
+//        Picasso.with(this).load(wordModel.image_url).into(ivWord);
+        Glide.with(this).load(wordModel.image_url).into(ivWord);
 
         switch (wordModel.level) {
             case 0:
@@ -145,7 +146,7 @@ public class ToeicStudyActivity extends AppCompatActivity {
     }
 
     public void nextWord(final boolean isKnown) {
-        setAnimation(R.anim.slide_in_left);
+        setAnimation(R.animator.animation_move_to_left);
 
         animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
@@ -158,7 +159,7 @@ public class ToeicStudyActivity extends AppCompatActivity {
 
                 clFull.setLayoutTransition(null);
 
-                setAnimation(R.anim.slide_in_right);
+                setAnimation(R.animator.animation_move_from_right);
             }
         });
     }
