@@ -25,4 +25,6 @@ public class Constants {
     public static final String NOTIFICATION_TYPE_RESOURCES = "resources";
     public static final String NOTIFICATION_TYPE_DISCUSSION = "discussion";
     public static final String NOTIFICATION_TYPE_ANNOUNCEMENTS = "announcements";
+
+    public static final String EXTRA_STRING_DEFAULT = "topic";
 }

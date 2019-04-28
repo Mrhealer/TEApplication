@@ -3,6 +3,7 @@ package com.healer.dev.data.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +21,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class TopicExpandableListViewAdapter extends BaseExpandableListAdapter {
-
-    private String mTextDescription = "";
     private List<CategoryModel> mCategoryModelList;
     private HashMap<String, List<TopicModel>> mTopicModelHashMap;
     private Context mContext;
@@ -75,7 +74,6 @@ public class TopicExpandableListViewAdapter extends BaseExpandableListAdapter {
         CategoryModel categoryModel = (CategoryModel) getGroup(i);
 
         TextView tvCategory = view.findViewById(R.id.tv_category);
-        TextView tvCategoryDes = view.findViewById(R.id.tv_category_des);
         ImageView ivArray = view.findViewById(R.id.iv_arrow);
         CardView cvCategory = view.findViewById(R.id.cv_category);
 
@@ -87,14 +85,6 @@ public class TopicExpandableListViewAdapter extends BaseExpandableListAdapter {
             ivArray.setImageResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
 
         tvCategory.setText(categoryModel.name);
-
-        List<TopicModel> list = mTopicModelHashMap.get(categoryModel.name);
-        for (int b = 0; b < list.size(); b++) {
-            mTextDescription += list.get(b).name;
-            if (b != list.size() - 1)
-                mTextDescription += ", ";
-        }
-        tvCategoryDes.setText(mTextDescription);
 
         return view;
     }
@@ -109,7 +99,7 @@ public class TopicExpandableListViewAdapter extends BaseExpandableListAdapter {
         TextView tvTopic = view.findViewById(R.id.tv_name_topic);
         TextView tvLastTime = view.findViewById(R.id.tv_last_time);
         ProgressBar pbTopic = view.findViewById(R.id.pb_topic);
-
+        Log.d("Longkaka", "count : " + DatabaseManager.getInstance(mContext).getTopicIdSize(topicModel.id));
         pbTopic.setMax(12);
         pbTopic.setProgress(DatabaseManager.getInstance(mContext).getNumberWordById(topicModel.id, 4));
         pbTopic.setSecondaryProgress(12 - DatabaseManager.getInstance(mContext).getNumberWordById(topicModel.id, 0));

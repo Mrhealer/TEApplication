@@ -10,6 +10,7 @@ import com.healer.dev.data.models.CategoryModel;
 import com.healer.dev.data.models.TopicModel;
 import com.healer.dev.data.models.WordModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,28 +25,32 @@ public class DatabaseManager {
     private AssetHelper assetHelper;
     private static DatabaseManager databaseManager;
 
-    public DatabaseManager(Context context){
+    public DatabaseManager(Context context) {
         // Call constructor of AssetHelper to create DATABASE
         assetHelper = new AssetHelper(context);
-
+        try {
+            assetHelper.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         // give READDATABASE Permission for sqLiteDataBase
         sqLiteDatabase = assetHelper.getReadableDatabase();
     }
 
     // create Instance of DataBaseManager
-    public static DatabaseManager getInstance(Context context){
-        if(databaseManager == null)
+    public static DatabaseManager getInstance(Context context) {
+        if (databaseManager == null)
             databaseManager = new DatabaseManager(context);
         return databaseManager;
     }
 
     // get List<TopicModel> in Database
-    public List<TopicModel> getListTopic(){
+    public List<TopicModel> getListTopic() {
         Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_TOPIC, null);
         cursor.moveToFirst();
 
         List<TopicModel> list = new ArrayList<>();
-        while(!cursor.isAfterLast()){
+        while (!cursor.isAfterLast()) {
             // read data
             list.add(new TopicModel(cursor.getInt(0), cursor.getString(1), cursor.getString(3),
                     cursor.getString(4), cursor.getString(5), cursor.getString(6)));
@@ -57,18 +62,23 @@ public class DatabaseManager {
         return list;
     }
 
-    public int getNumberWordById(int topicId, int level){
+    public int getNumberWordById(int topicId, int level) {
         Cursor cursor = sqLiteDatabase.rawQuery("select level from " + TABLE_WORD +
                 " where level = " + level + " and topic_id = " + topicId, null);
 
         return cursor.getCount();
     }
 
+    public int getTopicIdSize(int topicId){
+        Cursor cursor = sqLiteDatabase.rawQuery("select level from " + TABLE_WORD + " where topic_id = " + topicId,null);
+        return cursor.getCount();
+    }
+
     // get List<CategoryModel> form Database
-    public List<CategoryModel> getListCategory(){
+    public List<CategoryModel> getListCategory() {
         List<CategoryModel> list = new ArrayList<>();
 
-        for(int i=0;i<getListTopic().size(); i+=5){
+        for (int i = 0; i < getListTopic().size(); i += 5) {
             list.add(new CategoryModel(getListTopic().get(i).category, getListTopic().get(i).color));
         }
 
@@ -76,13 +86,13 @@ public class DatabaseManager {
     }
 
     // get HashMap<String, list<>> from Database
-    public HashMap<String, List<TopicModel>> getHashMap(List<TopicModel> topicModelList, List<CategoryModel> categoryModelList){
+    public HashMap<String, List<TopicModel>> getHashMap(List<TopicModel> topicModelList, List<CategoryModel> categoryModelList) {
         HashMap<String, List<TopicModel>> hash = new HashMap<>();
 
-        for(int i=0;i<categoryModelList.size();i++){
+        for (int i = 0; i < categoryModelList.size(); i++) {
             hash.put(
                     categoryModelList.get(i).name,
-                    topicModelList.subList(i*5, i*5+5)
+                    topicModelList.subList(i * 5, i * 5 + 5)
             );
         }
 
@@ -92,13 +102,13 @@ public class DatabaseManager {
     public WordModel getRandomWord(int topicId, int preId) {
         Cursor cursor;
 
-        do{
+        do {
             int level = 0;
             double random = Math.random() * 100;
-            if(random < 5) level = 4;
-            else if(random < 15) level = 3;
-            else if(random < 30) level = 2;
-            else if(random < 60) level = 1;
+            if (random < 5) level = 4;
+            else if (random < 15) level = 3;
+            else if (random < 30) level = 2;
+            else if (random < 60) level = 1;
             else level = 0;
 
             cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_WORD +
@@ -115,16 +125,16 @@ public class DatabaseManager {
                 cursor.getInt(8), cursor.getInt(9));
     }
 
-    public void updateWordLevel(WordModel wordModel, boolean isKnown){
+    public void updateWordLevel(WordModel wordModel, boolean isKnown) {
         sqLiteDatabase = assetHelper.getWritableDatabase();
         int level = wordModel.level;
-        if(isKnown && level < 4) level++;
-        else if(!isKnown && level > 0) level--;
+        if (isKnown && level < 4) level++;
+        else if (!isKnown && level > 0) level--;
 
         ContentValues values = new ContentValues();
         values.put("level", level);
         sqLiteDatabase.update(TABLE_WORD, values,
-                "id = ?", new String[] {String.valueOf(wordModel.id)} );
+                "id = ?", new String[]{String.valueOf(wordModel.id)});
 
     }
 
@@ -134,7 +144,7 @@ public class DatabaseManager {
         ContentValues values = new ContentValues();
         values.put("last_time", lastTime);
 
-        sqLiteDatabase.update(TABLE_TOPIC, values, "id = ?", new String[] {String.valueOf(topicModel.id)});
+        sqLiteDatabase.update(TABLE_TOPIC, values, "id = ?", new String[]{String.valueOf(topicModel.id)});
 
     }
 

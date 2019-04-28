@@ -24,6 +24,7 @@ import com.healer.dev.R;
 import com.healer.dev.data.local.DatabaseManager;
 import com.healer.dev.data.models.TopicModel;
 import com.healer.dev.data.models.WordModel;
+import com.healer.dev.utils.Constants;
 
 import java.util.Locale;
 
@@ -89,7 +90,7 @@ public class ToeicStudyActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        topicModel = (TopicModel) getIntent().getSerializableExtra("topic");
+        topicModel = (TopicModel) getIntent().getSerializableExtra(Constants.EXTRA_STRING_DEFAULT);
         tvNameTopic.setText(topicModel.name);
         rlBackground.setBackgroundColor(Color.parseColor(topicModel.color));
 
@@ -103,20 +104,6 @@ public class ToeicStudyActivity extends AppCompatActivity {
         Glide.with(this).load(wordModel.image_url).
                 apply(new RequestOptions().placeholder(R.drawable.loading).
                         error(R.drawable.ic_error)).into(ivWord);
-//        switch (wordModel.level) {
-//            case 0:
-//                tvLevel.setText("New");
-//                break;
-//            case 1:
-//            case 2:
-//            case 3:
-//                tvLevel.setText("Review");
-//                break;
-//            case 4:
-//                tvLevel.setText("Master");
-//                break;
-//        }
-
     }
 
     private void initTxSpeech() {
@@ -134,6 +121,11 @@ public class ToeicStudyActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * speak text when user click item speak
+     *
+     * @param text
+     */
     private void speakText(String text) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mTxSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
@@ -142,12 +134,15 @@ public class ToeicStudyActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * binding data
+     */
     private void setupUI() {
         ButterKnife.bind(this);
         if (getSupportActionBar() != null) getActionBar().hide();
     }
 
-    @OnClick({R.id.tv_idont_know, R.id.tv_iknow, R.id.iv_back, R.id.tv_details,R.id.im_Speak})
+    @OnClick({R.id.tv_idont_know, R.id.tv_iknow, R.id.iv_back, R.id.tv_details, R.id.im_Speak})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_idont_know:
@@ -171,7 +166,7 @@ public class ToeicStudyActivity extends AppCompatActivity {
         }
     }
 
-    public void changeStatues(boolean isExpanded) {
+    private void changeStatues(boolean isExpanded) {
         if (isExpanded) {
             tvDetails.setVisibility(View.VISIBLE);
             clDetailPart.setVisibility(View.GONE);
@@ -181,7 +176,7 @@ public class ToeicStudyActivity extends AppCompatActivity {
         }
     }
 
-    public void nextWord(final boolean isKnown) {
+    private void nextWord(final boolean isKnown) {
         setAnimation(R.animator.animation_move_to_left);
 
         animatorSet.addListener(new AnimatorListenerAdapter() {
@@ -200,7 +195,7 @@ public class ToeicStudyActivity extends AppCompatActivity {
         });
     }
 
-    public void setAnimation(int animation) {
+    private void setAnimation(int animation) {
         animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, animation);
         animatorSet.setTarget(cvWord);
         animatorSet.start();
