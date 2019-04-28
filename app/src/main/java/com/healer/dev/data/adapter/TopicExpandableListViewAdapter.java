@@ -21,34 +21,35 @@ import java.util.List;
 
 public class TopicExpandableListViewAdapter extends BaseExpandableListAdapter {
 
-    List<CategoryModel> categoryModelList;
-    HashMap<String, List<TopicModel>> topicModelHashMap;
-    Context context;
+    private String mTextDescription = "";
+    private List<CategoryModel> mCategoryModelList;
+    private HashMap<String, List<TopicModel>> mTopicModelHashMap;
+    private Context mContext;
 
     public TopicExpandableListViewAdapter(Context context, List<CategoryModel> categoryModelList, HashMap<String, List<TopicModel>> topicModelHashMap) {
-        this.context = context;
-        this.categoryModelList = categoryModelList;
-        this.topicModelHashMap = topicModelHashMap;
+        this.mContext = context;
+        this.mCategoryModelList = categoryModelList;
+        this.mTopicModelHashMap = topicModelHashMap;
     }
 
     @Override
     public int getGroupCount() {
-        return categoryModelList.size();
+        return mCategoryModelList.size();
     }
 
     @Override
     public int getChildrenCount(int i) {
-        return topicModelHashMap.get(categoryModelList.get(i).name).size();
+        return mTopicModelHashMap.get(mCategoryModelList.get(i).name).size();
     }
 
     @Override
     public Object getGroup(int i) {
-        return categoryModelList.get(i);
+        return mCategoryModelList.get(i);
     }
 
     @Override
     public Object getChild(int i, int i1) {
-        return topicModelHashMap.get(categoryModelList.get(i).name).get(i1);
+        return mTopicModelHashMap.get(mCategoryModelList.get(i).name).get(i1);
     }
 
     @Override
@@ -87,14 +88,13 @@ public class TopicExpandableListViewAdapter extends BaseExpandableListAdapter {
 
         tvCategory.setText(categoryModel.name);
 
-        String s = "";
-        List<TopicModel> list = topicModelHashMap.get(categoryModel.name);
+        List<TopicModel> list = mTopicModelHashMap.get(categoryModel.name);
         for (int b = 0; b < list.size(); b++) {
-            s += list.get(b).name;
+            mTextDescription += list.get(b).name;
             if (b != list.size() - 1)
-                s += ", ";
+                mTextDescription += ", ";
         }
-        tvCategoryDes.setText(s);
+        tvCategoryDes.setText(mTextDescription);
 
         return view;
     }
@@ -111,8 +111,8 @@ public class TopicExpandableListViewAdapter extends BaseExpandableListAdapter {
         ProgressBar pbTopic = view.findViewById(R.id.pb_topic);
 
         pbTopic.setMax(12);
-        pbTopic.setProgress(DatabaseManager.getInstance(context).getNumberWordById(topicModel.id, 4));
-        pbTopic.setSecondaryProgress(12 - DatabaseManager.getInstance(context).getNumberWordById(topicModel.id, 0));
+        pbTopic.setProgress(DatabaseManager.getInstance(mContext).getNumberWordById(topicModel.id, 4));
+        pbTopic.setSecondaryProgress(12 - DatabaseManager.getInstance(mContext).getNumberWordById(topicModel.id, 0));
 
         tvTopic.setText(topicModel.name);
         if (topicModel.lastTime != null)
@@ -127,12 +127,10 @@ public class TopicExpandableListViewAdapter extends BaseExpandableListAdapter {
     }
 
     public void refreshList(Context context) {
-        // 1.change data
-        topicModelHashMap.clear();
+        // Update List Expand
+        mTopicModelHashMap.clear();
         DatabaseManager db = DatabaseManager.getInstance(context);
-        topicModelHashMap.putAll(db.getHashMap(db.getListTopic(), db.getListCategory()));
-
-        // 2.refresh: add, remove, addAll, removeAll, clear
+        mTopicModelHashMap.putAll(db.getHashMap(db.getListTopic(), db.getListCategory()));
         notifyDataSetChanged();
     }
 }

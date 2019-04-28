@@ -21,7 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:padding="16dp"
-        android:text="Topic name"
         android:textColor="@color/colorTextWhite"
         android:textSize="18sp" />
 
