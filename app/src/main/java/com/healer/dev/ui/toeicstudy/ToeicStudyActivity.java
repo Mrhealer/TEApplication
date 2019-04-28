@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.healer.dev.R;
 import com.healer.dev.data.local.DatabaseManager;
 import com.healer.dev.data.models.TopicModel;
@@ -92,8 +93,9 @@ public class ToeicStudyActivity extends AppCompatActivity {
         tvType.setText(wordModel.type);
         tvExample.setText(wordModel.example);
         tvExampleTran.setText(wordModel.example_translation);
-//        Picasso.with(this).load(wordModel.image_url).into(ivWord);
-        Glide.with(this).load(wordModel.image_url).into(ivWord);
+        Glide.with(this).load(wordModel.image_url).
+                apply(new RequestOptions().placeholder(R.drawable.loading).
+                        error(R.drawable.ic_error)).into(ivWord);
 
         switch (wordModel.level) {
             case 0:
