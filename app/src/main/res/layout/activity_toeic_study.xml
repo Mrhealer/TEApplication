@@ -188,13 +188,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_pronun" />
 
-            <TextView
-                android:id="@+id/tv_level"
+            <ImageView
+                android:id="@+id/im_Speak"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="21dp"
-                android:text="Level"
+                android:src="@drawable/ic_speak"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

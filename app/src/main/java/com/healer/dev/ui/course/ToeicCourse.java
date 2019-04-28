@@ -10,6 +10,7 @@ import com.healer.dev.data.adapter.TopicExpandableListViewAdapter;
 import com.healer.dev.data.local.DatabaseManager;
 import com.healer.dev.data.models.TopicModel;
 import com.healer.dev.ui.toeicstudy.ToeicStudyActivity;
+import com.healer.dev.utils.Connectivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,7 +32,9 @@ public class ToeicCourse extends AppCompatActivity {
         mEx.setAdapter(mTopic);
 
         mEx.setOnChildClickListener((expandableListView, view, group, child, l) -> {
+            if (!Connectivity.isNetworkAvailable(getApplicationContext())) {
 
+            }
             TopicModel topicModel = mDatabase.getListTopic().get(group * 5 + child);
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");

@@ -153,4 +153,8 @@
     <string name="msg_under_construction">This function is being developed</string>
     <string name="title_activity_quiz_discussion">help</string>
     <string name="about_name">MrHealer Tnut</string>
+
+    <!--course-->
+    <string name="language_not_support">This language is not supported</string>
+    <string name="turn_on_internet">Please connect wifi/3g for continue</string>
 </resources>

@@ -6,7 +6,9 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.LayoutTransition;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -21,6 +24,8 @@ import com.healer.dev.R;
 import com.healer.dev.data.local.DatabaseManager;
 import com.healer.dev.data.models.TopicModel;
 import com.healer.dev.data.models.WordModel;
+
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,14 +64,15 @@ public class ToeicStudyActivity extends AppCompatActivity {
     @BindView(R.id.rl_background)
     RelativeLayout rlBackground;
     TopicModel topicModel;
-    @BindView(R.id.tv_level)
-    TextView tvLevel;
+    @BindView(R.id.im_Speak)
+    ImageView im_Speak;
     @BindView(R.id.cl_full)
     ConstraintLayout clFull;
 
     WordModel wordModel;
     int preId = -1;
     AnimatorSet animatorSet;
+    private TextToSpeech mTxSpeech;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +84,7 @@ public class ToeicStudyActivity extends AppCompatActivity {
         setupUI();
 
         loadData();
+        initTxSpeech();
 
     }
 
@@ -96,21 +103,43 @@ public class ToeicStudyActivity extends AppCompatActivity {
         Glide.with(this).load(wordModel.image_url).
                 apply(new RequestOptions().placeholder(R.drawable.loading).
                         error(R.drawable.ic_error)).into(ivWord);
+//        switch (wordModel.level) {
+//            case 0:
+//                tvLevel.setText("New");
+//                break;
+//            case 1:
+//            case 2:
+//            case 3:
+//                tvLevel.setText("Review");
+//                break;
+//            case 4:
+//                tvLevel.setText("Master");
+//                break;
+//        }
 
-        switch (wordModel.level) {
-            case 0:
-                tvLevel.setText("New");
-                break;
-            case 1:
-            case 2:
-            case 3:
-                tvLevel.setText("Review");
-                break;
-            case 4:
-                tvLevel.setText("Master");
-                break;
+    }
+
+    private void initTxSpeech() {
+        mTxSpeech = new TextToSpeech(this, status -> {
+            if (status == TextToSpeech.SUCCESS) {
+                int result = mTxSpeech.setLanguage(Locale.ENGLISH);
+                if (result == TextToSpeech.LANG_MISSING_DATA ||
+                        result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.language_not_support), Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                mTxSpeech.setPitch(0.6f);
+                mTxSpeech.setSpeechRate(1.0f);
+            }
+        });
+    }
+
+    private void speakText(String text) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mTxSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+        } else {
+            mTxSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null);
         }
-
     }
 
     private void setupUI() {
@@ -118,7 +147,7 @@ public class ToeicStudyActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) getActionBar().hide();
     }
 
-    @OnClick({R.id.tv_idont_know, R.id.tv_iknow, R.id.iv_back, R.id.tv_details})
+    @OnClick({R.id.tv_idont_know, R.id.tv_iknow, R.id.iv_back, R.id.tv_details,R.id.im_Speak})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_idont_know:
@@ -133,6 +162,11 @@ public class ToeicStudyActivity extends AppCompatActivity {
             case R.id.tv_details:
                 clFull.setLayoutTransition(new LayoutTransition());
                 changeStatues(false);
+                break;
+            case R.id.im_Speak:
+                speakText(wordModel.origin);
+                break;
+            default:
                 break;
         }
     }
@@ -170,5 +204,14 @@ public class ToeicStudyActivity extends AppCompatActivity {
         animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, animation);
         animatorSet.setTarget(cvWord);
         animatorSet.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mTxSpeech != null) {
+            mTxSpeech.stop();
+            mTxSpeech.shutdown();
+        }
+        super.onDestroy();
     }
 }
