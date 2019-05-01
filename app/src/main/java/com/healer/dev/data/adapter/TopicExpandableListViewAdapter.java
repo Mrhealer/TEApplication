@@ -3,7 +3,6 @@ package com.healer.dev.data.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,11 +97,10 @@ public class TopicExpandableListViewAdapter extends BaseExpandableListAdapter {
 
         TextView tvTopic = view.findViewById(R.id.tv_name_topic);
         TextView tvLastTime = view.findViewById(R.id.tv_last_time);
-        ProgressBar pbTopic = view.findViewById(R.id.pb_topic);
-        Log.d("Longkaka", "count : " + DatabaseManager.getInstance(mContext).getTopicIdSize(topicModel.id));
-        pbTopic.setMax(12);
-        pbTopic.setProgress(DatabaseManager.getInstance(mContext).getNumberWordById(topicModel.id, 4));
-        pbTopic.setSecondaryProgress(12 - DatabaseManager.getInstance(mContext).getNumberWordById(topicModel.id, 0));
+//        ProgressBar pbTopic = view.findViewById(R.id.pb_topic);
+//        pbTopic.setMax(12);
+//        pbTopic.setProgress(DatabaseManager.getInstance(mContext).getNumberWordById(topicModel.id, 4));
+//        pbTopic.setSecondaryProgress(12 - DatabaseManager.getInstance(mContext).getNumberWordById(topicModel.id, 0));
 
         tvTopic.setText(topicModel.name);
         if (topicModel.lastTime != null)
