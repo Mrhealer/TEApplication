@@ -91,7 +91,7 @@ public class TopicExpandableListViewAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        view = inflater.inflate(R.layout.item_list_topic, viewGroup, false);
+        view = inflater.inflate(R.layout.item_timeline, viewGroup, false);
 
         TopicModel topicModel = (TopicModel) getChild(i, i1);
 

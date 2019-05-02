@@ -42,6 +42,7 @@ import com.healer.dev.R;
 import com.healer.dev.data.models.Quiz;
 import com.healer.dev.ui.PresenterInjector;
 import com.healer.dev.ui.about.AboutActivity;
+import com.healer.dev.ui.course.ToeicActivity;
 import com.healer.dev.ui.quizdetails.QuizDetailsActivity;
 import com.healer.dev.ui.quizdetails.QuizDetailsContract;
 import com.healer.dev.ui.course.ToeicCourse;
@@ -488,7 +489,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     public void navigateToCourse() {
         // TODO: Navigate to Course screen
 //        Toast.makeText(getApplicationContext(), R.string.msg_under_construction, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, ToeicCourse.class);
+        Intent intent = new Intent(this, ToeicActivity.class);
         startActivity(intent);
     }
 
