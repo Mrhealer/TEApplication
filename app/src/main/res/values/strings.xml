@@ -70,7 +70,7 @@
     <string name="txt_deadline_none">NONE</string>
 
     <!--Navigation Drawer Menu Items-->
-    <string name="Course">Course</string>
+    <string name="Course">600 Toeic</string>
     <string name="quizlist">QuizList</string>
     <string name="createQuiz">Create Quiz</string>
     <string name="notifications">Notifications</string>

@@ -8,8 +8,6 @@ public class ToeicPresenter implements ToeicScoreContract {
 
     // TODO : LongTV9 will implement later
     private DatabaseManager mDataBase;
-    private TopicExpandableListViewAdapter mTopic;
-
     @Override
     public void start() {
 

@@ -46,6 +46,10 @@ public class ToeicTimeLineAdapter extends RecyclerView.Adapter<ToeicTimeLineAdap
         TopicModel topicModel = mArrayList.get(i);
         sendData(myHolder, R.drawable.ic_tree, R.color.dot_dark5);
         myHolder.tvNameTopic.setText(topicModel.name);
+        String lastName = topicModel.lastTime;
+        if (lastName != null) {
+            myHolder.tvLastTime.setText(lastName);
+        }
     }
 
     private void sendData(MyHolder myHolder, int drawable, int color) {
@@ -63,24 +67,36 @@ public class ToeicTimeLineAdapter extends RecyclerView.Adapter<ToeicTimeLineAdap
         return mArrayList.size();
     }
 
+    /**
+     * class custom item for adapter
+     */
     public class MyHolder extends RecyclerView.ViewHolder {
 
-        TextView tvNameTopic;
+        TextView tvNameTopic, tvLastTime;
         TimelineView timelineView;
 
         public MyHolder(@NonNull View itemView, int viewType) {
             super(itemView);
             tvNameTopic = itemView.findViewById(R.id.tv_name_topic);
             timelineView = itemView.findViewById(R.id.timeline);
+            tvLastTime = itemView.findViewById(R.id.tv_last_time);
             timelineView.initLine(viewType);
             itemView.setOnClickListener(v -> mListener.onItemClick(getAdapterPosition()));
         }
     }
 
+    /**
+     * set listener click when user click item
+     *
+     * @param onItemClickListener
+     */
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.mListener = onItemClickListener;
     }
 
+    /**
+     * Interface for Listener Click
+     */
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
