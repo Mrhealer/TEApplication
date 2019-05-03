@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.healer.dev.R;
@@ -20,13 +21,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ToeicActivity extends AppCompatActivity implements ToeicTimeLineAdapter.OnItemClickListener {
-
-
     private ArrayList<TopicModel> mArrayList;
     private ToeicTimeLineAdapter mAdapter;
     private LinearLayoutManager mLinear;
     private RecyclerView mRecyclerView;
     private DatabaseManager mDbManager;
+    private ImageView mImageBack;
 
 
     @Override
@@ -46,6 +46,8 @@ public class ToeicActivity extends AppCompatActivity implements ToeicTimeLineAda
         mRecyclerView.setLayoutManager(mLinear);
         mAdapter = new ToeicTimeLineAdapter(mArrayList);
         mRecyclerView.setAdapter(mAdapter);
+        mImageBack = findViewById(R.id.img_back);
+        mImageBack.setOnClickListener(v -> onBackPressed());
     }
 
     @Override

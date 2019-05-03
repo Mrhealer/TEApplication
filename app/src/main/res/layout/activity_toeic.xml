@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_yellow_deadline"
+    android:orientation="vertical"
     tools:context=".ui.course.ToeicActivity">
+
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:srcCompat="@drawable/ic_arrow_back_black_24dp"
+        tools:ignore="MissingConstraints" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -14,4 +25,4 @@
         android:padding="12dp"
         tools:ignore="MissingConstraints"
         tools:listitem="@layout/item_timeline" />
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
