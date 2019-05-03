@@ -2,7 +2,6 @@ package com.healer.dev.ui.course;
 
 import android.content.Context;
 
-import com.healer.dev.data.adapter.TopicExpandableListViewAdapter;
 import com.healer.dev.data.local.DatabaseManager;
 
 public class ToeicPresenter implements ToeicScoreContract {

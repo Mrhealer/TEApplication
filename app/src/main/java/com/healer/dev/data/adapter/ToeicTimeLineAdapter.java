@@ -26,6 +26,8 @@ public class ToeicTimeLineAdapter extends RecyclerView.Adapter<ToeicTimeLineAdap
         this.mArrayList = mArrayList;
     }
 
+    private OnItemClickListener mListener;
+
     @Override
     public int getItemViewType(int position) {
         return TimelineView.getTimeLineViewType(position, getItemCount());
@@ -71,6 +73,15 @@ public class ToeicTimeLineAdapter extends RecyclerView.Adapter<ToeicTimeLineAdap
             tvNameTopic = itemView.findViewById(R.id.tv_name_topic);
             timelineView = itemView.findViewById(R.id.timeline);
             timelineView.initLine(viewType);
+            itemView.setOnClickListener(v -> mListener.onItemClick(getAdapterPosition()));
         }
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.mListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 }

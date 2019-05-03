@@ -17,7 +17,6 @@
         <activity
             android:name=".ui.toeicstudy.ToeicStudyActivity"
             android:theme="@style/AppThemeNoActionBar" />
-        <activity android:name=".ui.course.ToeicCourse" />
         <activity android:name=".ui.course.ToeicActivity"/>
         <activity
             android:name=".ui.about.AboutActivity"

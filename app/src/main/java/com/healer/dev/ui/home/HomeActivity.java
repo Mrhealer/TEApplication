@@ -45,7 +45,6 @@ import com.healer.dev.ui.about.AboutActivity;
 import com.healer.dev.ui.course.ToeicActivity;
 import com.healer.dev.ui.quizdetails.QuizDetailsActivity;
 import com.healer.dev.ui.quizdetails.QuizDetailsContract;
-import com.healer.dev.ui.course.ToeicCourse;
 import com.healer.dev.ui.settings.SettingsActivity;
 import com.healer.dev.utils.Connectivity;
 
