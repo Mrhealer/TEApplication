@@ -15,7 +15,7 @@
     <string name="details_page_change_photo">Change Profile Photo</string>
     <string name="details_page_setup_profile">Setup Profile</string>
     <string-array name="details_page_track_spinner">
-        <item>Select Your Track</item>
+        <item>Select Your Position</item>
         <item>Teacher</item>
         <item>Student</item>
     </string-array>

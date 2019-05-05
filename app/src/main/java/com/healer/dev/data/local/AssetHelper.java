@@ -31,7 +31,7 @@ public class AssetHelper extends SQLiteAssetHelper {
 
         boolean dbExist = checkDataBase();
 
-        if (dbExist) {
+        if (!dbExist) {
             //do nothing - database already exist
         } else {
 
