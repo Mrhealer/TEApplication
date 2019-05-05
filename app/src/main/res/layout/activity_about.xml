@@ -136,15 +136,6 @@
 
         </android.support.v7.widget.CardView>
     </RelativeLayout>
-
-    <Button
-        android:layout_width="220dp"
-        android:layout_height="45dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/buttonstyle"
-        android:text="Contact with Me"
-        android:textColor="#fff" />
     <!-- Here starts scrolling - view all content -->
     <ScrollView
         android:layout_width="wrap_content"

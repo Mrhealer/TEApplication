@@ -128,12 +128,12 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
     @Override
     public void showSubmitButton() {
-        mImgNextQuestion.setImageResource(R.drawable.ic_submit_btn);
+        mImgNextQuestion.setImageResource(R.drawable.ic_button_submit);
     }
 
     @Override
     public void showNextButton() {
-        mImgNextQuestion.setImageResource(R.drawable.ic_next_circle_filled);
+        mImgNextQuestion.setImageResource(R.drawable.ic_next_question);
     }
 
     @Override

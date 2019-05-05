@@ -110,7 +110,7 @@
         android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_next_circle_filled" />
+        app:srcCompat="@drawable/ic_next_question" />
 
     <ImageView
         android:id="@+id/img_quiz_attempt_previous"
@@ -121,7 +121,7 @@
         android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_previous_circle_filled" />
+        app:srcCompat="@drawable/ic_back_question" />
 
     <TextView
         android:id="@+id/tv_attemt_quiz_status"
