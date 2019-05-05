@@ -58,7 +58,9 @@ public class ToeicTimeLineAdapter extends RecyclerView.Adapter<ToeicTimeLineAdap
 
     private Drawable getDrawable(Context context, int drawable, int color) {
         Drawable drawable1 = VectorDrawableCompat.create(context.getResources(), drawable, context.getTheme());
-        drawable1.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+        if (drawable1 != null) {
+            drawable1.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+        }
         return drawable1;
     }
 
