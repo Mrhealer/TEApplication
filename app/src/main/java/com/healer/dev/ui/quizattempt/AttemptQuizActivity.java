@@ -43,19 +43,20 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     private boolean mIsEvaluated;
 
     // UI Elements
-    Toolbar mToolbar;
+    private Toolbar mToolbar;
 
-    TextView mTvQuestionDesc;
+    private TextView mTvQuestionDesc;
 
-    RadioGroup mRgSingleChoice;
-    LinearLayout mLLMultipleChoice;
-    EditText mEtSubjective;
+    private RadioGroup mRgSingleChoice;
+    private LinearLayout mLLMultipleChoice;
+    private EditText mEtSubjective;
 
-    ScrollView mSvQuestionOptionsHolder;
-    FrameLayout mAllTypeHolder;
-    private ImageView mImgNextQuestion, mImgPrevQuestion;
+    private ScrollView mSvQuestionOptionsHolder;
+    private FrameLayout mAllTypeHolder;
+    private ImageView mImgNextQuestion;
+    private ImageView mImgPrevQuestion;
 
-    TextView mTvQuestionStatus;
+    private TextView mTvQuestionStatus;
     // UI Element Ends
 
     @Override
@@ -72,6 +73,9 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
     }
 
+    /**
+     * init UI for Attempt Quiz
+     */
     private void initializeUI() {
 
         mToolbar = findViewById(R.id.toolbar_attempt_quiz);

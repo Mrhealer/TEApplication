@@ -12,7 +12,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Class display about from Dev
+ * Class display about from Dev.
  */
 public class AboutActivity extends AppCompatActivity {
 
@@ -27,7 +27,7 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     /**
-     * butterknife click
+     * butterknife click.
      *
      * @param view
      */

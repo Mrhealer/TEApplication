@@ -110,11 +110,11 @@ public class NotificationUtils {
             case Constants.NOTIFICATION_TYPE_DISCUSSION:
                 drawableResourceId = R.drawable.ic_help;
                 break;
-            case Constants.NOTIFICATION_TYPE_ANNOUNCEMENTS:
-                drawableResourceId = R.drawable.ic_udacity;
-                break;
+//            case Constants.NOTIFICATION_TYPE_ANNOUNCEMENTS:
+//                drawableResourceId = R.drawable.ic_udacity;
+//                break;
             default:
-                drawableResourceId = R.drawable.ic_udacity;
+                drawableResourceId = R.drawable.ic_help;
                 break;
         }
         return BitmapFactory.decodeResource(context.getResources(), drawableResourceId);
@@ -135,10 +135,10 @@ public class NotificationUtils {
                 return R.drawable.ic_notification_deadline;
             case Constants.NOTIFICATION_TYPE_DISCUSSION:
                 return R.drawable.ic_help;
-            case Constants.NOTIFICATION_TYPE_ANNOUNCEMENTS:
-                return R.drawable.ic_udacity;
+//            case Constants.NOTIFICATION_TYPE_ANNOUNCEMENTS:
+//                return R.drawable.ic_udacity;
             default:
-                return R.drawable.ic_udacity;
+                return R.drawable.ic_help;
         }
     }
 

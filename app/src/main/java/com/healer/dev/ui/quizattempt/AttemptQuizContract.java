@@ -42,7 +42,7 @@ public interface AttemptQuizContract {
     }
 
     /**
-     * Quiz Presenter
+     * Quiz Presenter.
      */
     interface Presenter extends BasePresenter {
         void onNextClicked();

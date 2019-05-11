@@ -10,10 +10,13 @@ import com.healer.dev.data.models.Notification;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implement check database and handle database.
+ */
 public class DBHandler {
 
 
-    private static DBHandler INSTANCE = null;
+    private static DBHandler sINSTANCE = null;
     private SQLiteDatabase db;
 
     /**
@@ -22,14 +25,14 @@ public class DBHandler {
      * @return The unique instance of this class
      */
     public static DBHandler getInstance(Context context) {
-        if (INSTANCE == null) {
+        if (sINSTANCE == null) {
             synchronized (DBHandler.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = new DBHandler(context);
+                if (sINSTANCE == null) {
+                    sINSTANCE = new DBHandler(context);
                 }
             }
         }
-        return INSTANCE;
+        return sINSTANCE;
     }
 
     private DBHandler(Context context) {
@@ -39,7 +42,7 @@ public class DBHandler {
 
 
     /**
-     * Project representing ALL the columns of notifications table
+     * Project representing ALL the columns of notifications table.
      */
     private static final String[] NOTIFICATION_ALL_COLUMN = new String[]{
             NotificationContract.NotificationEntry.COLUMN_TIMESTAMP,    //0
@@ -52,7 +55,7 @@ public class DBHandler {
             NotificationContract.NotificationEntry.COLUMN_EXTRA_2};     //7
 
     /**
-     * Adds a notification to local database
+     * Adds a notification to local database.
      *
      * @param notification {@link Notification} object to e saved
      */

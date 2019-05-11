@@ -28,6 +28,10 @@ public class AttemptQuizPresenter implements AttemptQuizContract.Presenter {
 
     private boolean isQuizDisplayed = false;
 
+    /**
+     * Constructor create for product Data.
+     * @param view
+     */
     public AttemptQuizPresenter(AttemptQuizContract.View view) {
         this.mView = view;
         this.mDataHandler = DataHandlerProvider.provide();

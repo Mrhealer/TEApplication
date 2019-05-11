@@ -19,7 +19,7 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * Class handle data from Database
+ * Class handle data from Database.
  */
 public class AppDataHandler implements DataHandler {
 

@@ -1,5 +1,8 @@
 package com.healer.dev.utils;
 
+/**
+ * Define key value default.
+ */
 public class Constants {
 
     public static final String QUESTION_SINGLE_CHOICE = "single-choice";

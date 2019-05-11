@@ -18,6 +18,10 @@ public class AssetHelper extends SQLiteAssetHelper {
 
     private Context mContext;
 
+    /**
+     * Constructor create for create database.
+     * @param context
+     */
     public AssetHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.mContext = context;
