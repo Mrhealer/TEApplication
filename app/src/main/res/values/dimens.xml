@@ -180,4 +180,9 @@
     <!--custom-->
     <dimen name="card_view_margin_top">190dp</dimen>
     <dimen name="about_ln_height">75dp</dimen>
+
+    <!-- Toeic-->
+    <dimen name="base_padding_16">16dp</dimen>
+    <dimen name="rc_margin_top">-10dp</dimen>
+    <dimen name="title_margin_top">-56dp</dimen>
 </resources>

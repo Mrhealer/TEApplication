@@ -22,6 +22,7 @@ import com.healer.dev.ui.home.HomeActivity;
 public class UserProfileActivity extends AppCompatActivity implements ProfileContract.View,
         View.OnClickListener {
 
+    private static final String EMPTY_STRING = "";
     // UI Elements
     private ImageView mImgUserPic;
     private EditText mEtSlackHandle;
@@ -32,7 +33,6 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
     private ProgressBar mProgressBar;
     private Button mBtnNext;
     // UI element ends
-
     private Bundle extras;
 
     private ProfileContract.Presenter mPresenter;
@@ -163,13 +163,12 @@ public class UserProfileActivity extends AppCompatActivity implements ProfileCon
                 } else if (mImgUserPic.getDrawable() == null) {
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.user_image_empty), Toast.LENGTH_LONG).show();
                 } else {
-                    mPresenter.saveProfile("", mEtUserName.getText().toString(),
+                    mPresenter.saveProfile(EMPTY_STRING, mEtUserName.getText().toString(),
                             mEtSlackHandle.getText().toString(),
                             mCourseTrack.getSelectedItem().toString().trim());
                 }
                 break;
             default:
-                Toast.makeText(getApplicationContext(), "dm", Toast.LENGTH_LONG).show();
                 break;
         }
     }

@@ -46,6 +46,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.0.1'
     implementation 'com.google.firebase:firebase-messaging:17.3.2'
 
+    implementation 'com.google.firebase:firebase-ads:15.0.1'
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
     implementation "com.mikhaellopez:circularimageview:$rootProject.circleimageviewVersion"
     implementation "com.android.support:support-v4:$rootProject.supportLibVersion"

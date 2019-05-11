@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectConfiguration">
+    <option name="cachePath" value="core/cache/src/main/java/com/app/kaidee/cache" />
+    <option name="cacheTestPath" value="core/cache/src/test/java/com/app/kaidee/cache" />
+    <option name="dataPath" value="core/data/src/main/java/com/app/kaidee/data" />
+    <option name="dataTestPath" value="core/data/src/test/java/com/app/kaidee/data" />
+    <option name="domainCheckBox" value="true" />
+    <option name="domainPath" value="core/domain/src/main/java/com/app/kaidee/domain" />
+    <option name="domainTestPath" value="core/domain/src/test/java/com/app/kaidee/domain" />
+    <option name="json" value="" />
+    <option name="remotePath" value="core/remote/src/main/java/com/app/kaidee/remote" />
+    <option name="remoteTestPath" value="core/remote/src/test/java/com/app/kaidee/remote" />
+    <option name="roguePath" value="core/rogue2/src/main/java/com/kaidee/rogue2" />
+    <option name="rootClassNameTextField" value="Response" />
+  </component>
+</project>

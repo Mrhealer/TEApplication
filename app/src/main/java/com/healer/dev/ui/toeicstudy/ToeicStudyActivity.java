@@ -5,6 +5,7 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.LayoutTransition;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.healer.dev.R;
 import com.healer.dev.data.local.DatabaseManager;
 import com.healer.dev.data.models.TopicModel;
 import com.healer.dev.data.models.WordModel;
+import com.healer.dev.ui.admob.FullAdActivity;
 import com.healer.dev.utils.Constants;
 
 import java.util.Locale;
@@ -34,6 +36,7 @@ import butterknife.OnClick;
 
 public class ToeicStudyActivity extends AppCompatActivity {
 
+    private static final int COUNT_INDEX_MAX = 12;
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.tv_name_topic)
@@ -74,6 +77,7 @@ public class ToeicStudyActivity extends AppCompatActivity {
     int preId = -1;
     AnimatorSet animatorSet;
     private TextToSpeech mTxSpeech;
+    private int mCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,28 +181,40 @@ public class ToeicStudyActivity extends AppCompatActivity {
     }
 
     private void nextWord(final boolean isKnown) {
-        setAnimation(R.animator.animation_move_to_left);
+        mCount++;
+        if (mCount == COUNT_INDEX_MAX) {
+            Intent intent = new Intent(this, FullAdActivity.class);
+            startActivity(intent);
+        } else {
+            setAnimation(R.animator.animation_move_to_left);
+            animatorSet.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
 
-        animatorSet.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
+                    DatabaseManager.getInstance(ToeicStudyActivity.this).updateWordLevel(wordModel, isKnown);
+                    changeStatues(true);
+                    loadData();
 
-                DatabaseManager.getInstance(ToeicStudyActivity.this).updateWordLevel(wordModel, isKnown);
-                changeStatues(true);
-                loadData();
+                    clFull.setLayoutTransition(null);
 
-                clFull.setLayoutTransition(null);
+                    setAnimation(R.animator.animation_move_from_right);
+                }
+            });
+        }
 
-                setAnimation(R.animator.animation_move_from_right);
-            }
-        });
     }
 
     private void setAnimation(int animation) {
         animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(this, animation);
         animatorSet.setTarget(cvWord);
         animatorSet.start();
+    }
+
+    @Override
+    protected void onResume() {
+        mCount = 0;
+        super.onResume();
     }
 
     @Override

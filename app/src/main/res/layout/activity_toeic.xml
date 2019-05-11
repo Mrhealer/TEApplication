@@ -12,17 +12,30 @@
         android:id="@+id/img_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="16dp"
+        android:padding="@dimen/base_padding_16"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp"
         tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/title_margin_top"
+        android:gravity="center_vertical"
+        android:padding="@dimen/base_padding_16"
+        android:text="@string/Course"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_medium"
+        android:textStyle="bold" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_yellow_deadline"
+        android:layout_marginTop="@dimen/rc_margin_top"
+        android:background="@color/colorPbReview"
         android:clipToPadding="false"
-        android:padding="12dp"
+        android:padding="@dimen/margin_regular"
         tools:ignore="MissingConstraints"
         tools:listitem="@layout/item_timeline" />
 </LinearLayout>

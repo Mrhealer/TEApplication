@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryLight"
     android:orientation="vertical"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.about.AboutActivity">
 
     <RelativeLayout
@@ -236,5 +237,13 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
 </LinearLayout>

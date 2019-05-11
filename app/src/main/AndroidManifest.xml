@@ -14,10 +14,11 @@
         android:roundIcon="@drawable/certificate_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.admob.FullAdActivity"></activity>
         <activity
             android:name=".ui.toeicstudy.ToeicStudyActivity"
             android:theme="@style/AppThemeNoActionBar" />
-        <activity android:name=".ui.course.ToeicActivity"/>
+        <activity android:name=".ui.course.ToeicActivity" />
         <activity
             android:name=".ui.about.AboutActivity"
             android:theme="@style/homeactivity" />

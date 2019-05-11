@@ -46,7 +46,8 @@
                 android:textStyle="bold"
                 android:layout_alignParentLeft="true"
                 android:paddingRight="8dp"
-                android:paddingLeft="16dp" />
+                android:paddingLeft="16dp"
+                tools:ignore="RtlHardcoded" />
 
             <TextView
                 android:id="@+id/total_quizzes_count"
@@ -58,7 +59,8 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 tools:text="20"
                 android:layout_toRightOf="@id/total"
-                android:layout_toLeftOf="@+id/quiz_filter_button" />
+                android:layout_toLeftOf="@+id/quiz_filter_button"
+                tools:ignore="RtlHardcoded" />
 
             <ImageButton
                 android:id="@+id/quiz_filter_button"
@@ -72,7 +74,8 @@
                 android:contentDescription="@null"
                 app:srcCompat="@drawable/ic_controls"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/quiz_filter_button_margin_end" />
+                android:layout_marginRight="@dimen/quiz_filter_button_margin_end"
+                tools:ignore="RtlHardcoded" />
         </RelativeLayout>
     </android.support.design.widget.AppBarLayout>
 

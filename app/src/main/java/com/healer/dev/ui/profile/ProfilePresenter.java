@@ -60,10 +60,6 @@ public class ProfilePresenter implements ProfileContract.Presenter {
             mDataHandler.saveUserPic(pictureUrl);
         }
 
-        if (!slackHandle.startsWith("@")) {
-            slackHandle = "@" + slackHandle;
-        }
-
         mDataHandler.saveSlackHandle(slackHandle);
         mDataHandler.saveUserTrack(courseTrack);
         mDataHandler.saveUserName(username);
