@@ -42,6 +42,7 @@ import com.healer.dev.R;
 import com.healer.dev.data.models.Quiz;
 import com.healer.dev.ui.PresenterInjector;
 import com.healer.dev.ui.about.AboutActivity;
+import com.healer.dev.ui.admob.TestAdmobActivity;
 import com.healer.dev.ui.course.ToeicActivity;
 import com.healer.dev.ui.quizdetails.QuizDetailsActivity;
 import com.healer.dev.ui.quizdetails.QuizDetailsContract;

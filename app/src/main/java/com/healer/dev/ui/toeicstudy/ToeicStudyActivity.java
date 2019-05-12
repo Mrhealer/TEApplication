@@ -21,6 +21,9 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.healer.dev.R;
 import com.healer.dev.data.local.DatabaseManager;
 import com.healer.dev.data.models.TopicModel;

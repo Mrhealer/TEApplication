@@ -14,7 +14,8 @@
         android:roundIcon="@drawable/certificate_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.admob.FullAdActivity"></activity>
+        <activity android:name=".ui.admob.TestAdmobActivity"></activity>
+        <activity android:name=".ui.admob.FullAdActivity" />
         <activity
             android:name=".ui.toeicstudy.ToeicStudyActivity"
             android:theme="@style/AppThemeNoActionBar" />
@@ -51,6 +52,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_app_id" />
     </application>
 
 </manifest>
