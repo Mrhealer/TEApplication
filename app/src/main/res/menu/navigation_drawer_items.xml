@@ -33,11 +33,11 @@
 
     <item
         android:id="@+id/part_5_toeic"
-        android:icon="@drawable/ic_part_5_toeic"
+        android:icon="@drawable/ic_five"
         android:title="@string/toeic_part_5" />
     <item
         android:id="@+id/part_6_toeic"
-        android:icon="@drawable/ic_part_5_toeic"
+        android:icon="@drawable/ic_six"
         android:title="@string/toeic_part_6" />
 
 </menu>

@@ -1,6 +1,7 @@
 package com.healer.dev.ui.quizattempt;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,6 +29,7 @@ import com.healer.dev.R;
 import com.healer.dev.data.models.Option;
 import com.healer.dev.data.models.Question;
 import com.healer.dev.ui.PresenterInjector;
+import com.healer.dev.ui.admob.FullAdActivity;
 import com.healer.dev.utils.Constants;
 
 import java.util.Locale;
@@ -59,6 +61,8 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
     private TextView mTvQuestionStatus;
     // UI Element Ends
 
+    private boolean mIsLoad;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +75,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
         mPresenter.start(getIntent().getExtras());
 
+        mIsLoad = false;
     }
 
     /**
@@ -105,6 +110,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
     @Override
     protected void onResume() {
+        mIsLoad = false;
         super.onResume();
     }
 
@@ -165,6 +171,7 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
 
     @Override
     public void loadResultSummary(int score, int total, double percentage) {
+        mIsLoad = true;
         new AlertDialog.Builder(this)
                 .setMessage(String.format(Locale.getDefault(), "You've got %d out of %d. " +
                         "You have scored %.2f%%", score, total, (float) percentage))
@@ -173,13 +180,20 @@ public class AttemptQuizActivity extends AppCompatActivity implements AttemptQui
                 .setPositiveButton(R.string.quiz_review_confirmation, (dialog, which) -> {
                     mPresenter.onReviewClicked();
                     dialog.dismiss();
+                    startAdsActivity();
                 })
                 .setNegativeButton(R.string.user_confirmation_cancel, (dialog, which) -> {
+                    startAdsActivity();
                     dialog.dismiss();
                     dismissView();
                 })
                 .create()
                 .show();
+    }
+
+    private void startAdsActivity() {
+        Intent intent = new Intent(this, FullAdActivity.class);
+        startActivity(intent);
     }
 
     @Override
