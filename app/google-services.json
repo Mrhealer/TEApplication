@@ -15,12 +15,24 @@
       },
       "oauth_client": [
         {
+          "client_id": "513380454326-kdnqfmsn4soarjhh9iuc6mn0hp36ie3l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.healer.dev",
+            "certificate_hash": "cd5326002f85b76878cd1c0aa2f164e697ee30aa"
+          }
+        },
+        {
           "client_id": "513380454326-7l1sif4dovt3jmoiq19nhkemv2l9sqch.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.healer.dev",
             "certificate_hash": "b7e521790fe01149f7f50673f1edb40f7619a987"
           }
+        },
+        {
+          "client_id": "513380454326-kv726js901olegqug23f80sskhksv58d.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
@@ -37,7 +49,8 @@
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-5368462674389394~1100535627"
     }
   ],
   "configuration_version": "1"
