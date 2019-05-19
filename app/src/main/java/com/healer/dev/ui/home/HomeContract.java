@@ -78,6 +78,8 @@ public interface HomeContract {
         void onPartFiveSelected();
 
         void onPartSixSelected();
+
+        void onPartSevenSelected();
     }
 
 }

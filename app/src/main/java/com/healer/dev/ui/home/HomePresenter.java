@@ -201,4 +201,18 @@ public class HomePresenter implements HomeContract.Presenter {
         }
         mView.loadQuizzes(partQuizzes);
     }
+
+    @Override
+    public void onPartSevenSelected() {
+        List<Quiz> partQuizzes = new ArrayList<>();
+        for (Quiz quiz : mQuizzes) {
+            if (quiz.getpart() == 7) {
+                partQuizzes.add(quiz);
+            }
+        }
+        if (partQuizzes.isEmpty()) {
+            mView.handleEmptyView(HomeContract.PART_QUIZZES);
+        }
+        mView.loadQuizzes(partQuizzes);
+    }
 }

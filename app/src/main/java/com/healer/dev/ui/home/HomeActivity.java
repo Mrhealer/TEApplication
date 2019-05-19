@@ -42,7 +42,6 @@ import com.healer.dev.R;
 import com.healer.dev.data.models.Quiz;
 import com.healer.dev.ui.PresenterInjector;
 import com.healer.dev.ui.about.AboutActivity;
-import com.healer.dev.ui.admob.TestAdmobActivity;
 import com.healer.dev.ui.course.ToeicActivity;
 import com.healer.dev.ui.quizdetails.QuizDetailsActivity;
 import com.healer.dev.ui.quizdetails.QuizDetailsContract;
@@ -404,6 +403,9 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
             case R.id.radio_quiz_part6:
                 mPresenter.onPartSixSelected();
                 break;
+            case R.id.radio_quiz_part7:
+                mPresenter.onPartSevenSelected();
+                break;
             default:
                 break;
 
@@ -629,10 +631,13 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 //                        mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_RESOURCES);
 //                        break;
                     case R.id.part_5_toeic:
-                        mPresenter.onPartSixSelected();
+                        mPresenter.onPartFiveSelected();
                         break;
                     case R.id.part_6_toeic:
-                        mPresenter.onPartFiveSelected();
+                        mPresenter.onPartSixSelected();
+                        break;
+                    case R.id.part_7_toeic:
+                        mPresenter.onPartSevenSelected();
                         break;
                     default:
                         break;

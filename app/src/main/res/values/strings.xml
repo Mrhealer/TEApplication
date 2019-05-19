@@ -62,6 +62,7 @@
     <string name="radio_quiz_filter_bookmarks">Bookmarks</string>
     <string name="radio_quiz_filter_part_5_toeic">Part 5 Toeic</string>
     <string name="radio_quiz_filter_part_6_toeic">Part 6 Toeic</string>
+    <string name="radio_quiz_filter_part_7_toeic">Part 7 Toeic</string>
 
     <!--Login for social-->
     <string name="msg_login_successful">Login successful</string>
@@ -77,6 +78,7 @@
     <string name="resources">Resources</string>
     <string name="toeic_part_5">Part 5 Toeic</string>
     <string name="toeic_part_6">Part 6 Toeic</string>
+    <string name="toeic_part_7">Part 7 Toeic</string>
     <string name="suggestion">Suggestion</string>
 
     <string name="settings">Settings</string>

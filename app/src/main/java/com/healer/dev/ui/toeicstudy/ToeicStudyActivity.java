@@ -5,7 +5,6 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.LayoutTransition;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,13 +21,11 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.AdView;
 import com.healer.dev.R;
 import com.healer.dev.data.local.DatabaseManager;
 import com.healer.dev.data.models.TopicModel;
 import com.healer.dev.data.models.WordModel;
-import com.healer.dev.ui.admob.FullAdActivity;
 import com.healer.dev.utils.Constants;
 
 import java.util.Locale;
@@ -38,8 +35,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ToeicStudyActivity extends AppCompatActivity {
-
-    private static final int COUNT_INDEX_MAX = 12;
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.tv_name_topic)
@@ -80,7 +75,7 @@ public class ToeicStudyActivity extends AppCompatActivity {
     int preId = -1;
     AnimatorSet animatorSet;
     private TextToSpeech mTxSpeech;
-    private int mCount = 0;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +88,10 @@ public class ToeicStudyActivity extends AppCompatActivity {
 
         loadData();
         initTxSpeech();
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
     }
 
@@ -184,27 +183,21 @@ public class ToeicStudyActivity extends AppCompatActivity {
     }
 
     private void nextWord(final boolean isKnown) {
-        mCount++;
-        if (mCount == COUNT_INDEX_MAX) {
-            Intent intent = new Intent(this, FullAdActivity.class);
-            startActivity(intent);
-        } else {
-            setAnimation(R.animator.animation_move_to_left);
-            animatorSet.addListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    super.onAnimationEnd(animation);
+        setAnimation(R.animator.animation_move_to_left);
+        animatorSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
 
-                    DatabaseManager.getInstance(ToeicStudyActivity.this).updateWordLevel(wordModel, isKnown);
-                    changeStatues(true);
-                    loadData();
+                DatabaseManager.getInstance(ToeicStudyActivity.this).updateWordLevel(wordModel, isKnown);
+                changeStatues(true);
+                loadData();
 
-                    clFull.setLayoutTransition(null);
+                clFull.setLayoutTransition(null);
 
-                    setAnimation(R.animator.animation_move_from_right);
-                }
-            });
-        }
+                setAnimation(R.animator.animation_move_from_right);
+            }
+        });
 
     }
 
@@ -216,7 +209,6 @@ public class ToeicStudyActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        mCount = 0;
         super.onResume();
     }
 

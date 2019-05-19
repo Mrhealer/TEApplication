@@ -39,5 +39,9 @@
         android:id="@+id/part_6_toeic"
         android:icon="@drawable/ic_six"
         android:title="@string/toeic_part_6" />
+    <item
+        android:id="@+id/part_7_toeic"
+        android:icon="@drawable/ic_seven"
+        android:title="@string/toeic_part_7" />
 
 </menu>
