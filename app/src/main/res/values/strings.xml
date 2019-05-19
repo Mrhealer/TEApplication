@@ -76,6 +76,10 @@
     <string name="createQuiz">Create Quiz</string>
     <string name="notifications">Notifications</string>
     <string name="resources">Resources</string>
+    <string name="toeic_part_1">Part 1 Toeic</string>
+    <string name="toeic_part_2">Part 2 Toeic</string>
+    <string name="toeic_part_3">Part 3 Toeic</string>
+    <string name="toeic_part_4">Part 4 Toeic</string>
     <string name="toeic_part_5">Part 5 Toeic</string>
     <string name="toeic_part_6">Part 6 Toeic</string>
     <string name="toeic_part_7">Part 7 Toeic</string>
@@ -164,4 +168,8 @@
     <string name="banner_ad_unit_id">ca-app-pub-5368462674389394/6620455618</string>
     <string name="interstitial_full_screen">ca-app-pub-5368462674389394/4686048109</string>
 
+    <string name="review_app">Review for Toeic Trainning</string>
+    <string name="check_version_app">Check New Version</string>
+    <string name="fanpage_facebook">Fanpage Facebook</string>
+    <string name="contact_support">Contact Support</string>
 </resources>

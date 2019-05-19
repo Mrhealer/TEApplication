@@ -621,9 +621,10 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
                     case R.id.Course:
                         mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_COURSE);
                         break;
-                    case R.id.create_quizzes:
-                        mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_CREATE_QUIZ);
-                        break;
+                    // TODO : Function will not implement
+//                    case R.id.create_quizzes:
+//                        mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_CREATE_QUIZ);
+//                        break;
                     case R.id.notifications:
                         mPresenter.onNavigationItemSelected(HomeContract.NAVIGATION_NOTIFICATIONS);
                         break;
